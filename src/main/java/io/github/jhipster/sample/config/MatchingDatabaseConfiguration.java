@@ -10,7 +10,6 @@ import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
@@ -51,9 +50,6 @@ public class MatchingDatabaseConfiguration {
     public SqlSessionFactory matchingSqlSessionFactory() throws Exception {
         final SqlSessionFactoryBean sessionFactory = new SqlSessionFactoryBean();
         sessionFactory.setDataSource(matchingDataSource());
-//        sessionFactory.setMapperLocations(new PathMatchingResourcePatternResolver().
-//            getResources(localMapper));
-//        sessionFactory.setPlugins(ArrayUtils.toArray(pageHelper));
         return sessionFactory.getObject();
     }
 

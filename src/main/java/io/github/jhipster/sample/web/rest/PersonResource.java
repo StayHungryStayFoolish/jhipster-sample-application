@@ -1,12 +1,9 @@
 package io.github.jhipster.sample.web.rest;
 
 import io.github.jhipster.sample.entity.Person;
-import io.github.jhipster.sample.mapper.PersonDao;
+import io.github.jhipster.sample.service.PersonService;
 import io.micrometer.core.annotation.Timed;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @Author: Created by bonismo@hotmail.com on 2019/7/24 7:40 PM
@@ -17,25 +14,33 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api")
 public class PersonResource {
 
-    private final PersonDao personDao;
+    private final PersonService personService;
 
-    public PersonResource(PersonDao personDao) {
-        this.personDao = personDao;
+    public PersonResource(PersonService personService) {
+        this.personService = personService;
     }
 
-    @GetMapping("/person/create/")
+    @PostMapping("/person")
     @Timed
-    public void createPerson() {
-        String name = "Lily";
-        String age = "18";
-        String sex = "female";
-        personDao.insertPerson(name, age, sex);
+    public void createPerson(@RequestBody Person person) {
+        personService.createPerson(person);
+    }
+
+    @PutMapping("/person")
+    @Timed
+    public void updatePerson(@RequestBody Person person) {
+        personService.createPerson(person);
     }
 
     @GetMapping("/person/{name}")
     @Timed
-    public Person createPerson(@PathVariable String name) {
-        Person person = personDao.findPersonByName(name);
-        return person;
+    public Person findPersonByName(@PathVariable String name) {
+        return personService.findPerson(name);
+    }
+
+    @DeleteMapping("/person/{id}")
+    @Timed
+    public void deletePerson(@PathVariable Long id) {
+        personService.deletePerson(id);
     }
 }
