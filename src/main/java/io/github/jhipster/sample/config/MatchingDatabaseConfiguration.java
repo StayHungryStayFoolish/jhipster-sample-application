@@ -67,6 +67,13 @@ public class MatchingDatabaseConfiguration {
         return new DataSourceTransactionManager(dataSource);
     }
 
+//    @Bean
+//    public DataSourceTransactionManager dataSourceTransactionManager(
+//        DataSource dataSource) {
+//        DataSourceTransactionManager manager = new DataSourceTransactionManager();
+//        manager.setDataSource(dataSource);
+//        return manager;
+//    }
 }
 
 

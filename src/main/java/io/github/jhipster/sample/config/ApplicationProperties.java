@@ -2,6 +2,8 @@ package io.github.jhipster.sample.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 
+import java.time.LocalTime;
+
 /**
  * Properties specific to Jhipster Sample Application.
  * <p>
@@ -13,6 +15,8 @@ public class ApplicationProperties {
 
     private Matching matching;
 
+    private Attendance attendance;
+
     public Matching getMatching() {
         return matching;
     }
@@ -21,11 +25,19 @@ public class ApplicationProperties {
         this.matching = matching;
     }
 
-    public static class Matching{
+    public Attendance getAttendance() {
+        return attendance;
+    }
+
+    public void setAttendance(Attendance attendance) {
+        this.attendance = attendance;
+    }
+
+    public static class Matching {
 
         private Datasource datasource;
 
-        public static class Datasource{
+        public static class Datasource {
             private String type;
             private String url;
             private String username;
@@ -79,6 +91,40 @@ public class ApplicationProperties {
 
         public void setDatasource(Datasource datasource) {
             this.datasource = datasource;
+        }
+    }
+
+    public static class Attendance {
+
+        private Rule rule;
+
+        public Rule getRule() {
+            return rule;
+        }
+
+        public void setRule(Rule rule) {
+            this.rule = rule;
+        }
+
+        public static class Rule {
+            private LocalTime onDuty;
+            private LocalTime offDuty;
+
+            public LocalTime getOnDuty() {
+                return onDuty;
+            }
+
+            public void setOnDuty(LocalTime onDuty) {
+                this.onDuty = onDuty;
+            }
+
+            public LocalTime getOffDuty() {
+                return offDuty;
+            }
+
+            public void setOffDuty(LocalTime offDuty) {
+                this.offDuty = offDuty;
+            }
         }
     }
 }

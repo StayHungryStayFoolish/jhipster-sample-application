@@ -132,3 +132,7 @@ application:
             username: root
             password: admin
             driver-class-name: com.mysql.jdbc.Driver
+    attendance:
+        rule:
+            onDuty: '09:40'
+            offDuty: '18:30'

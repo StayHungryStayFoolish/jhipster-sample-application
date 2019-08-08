@@ -50,6 +50,18 @@ public class UserService {
         this.cacheManager = cacheManager;
     }
 
+    public void initUser() throws Exception {
+        User user = new User();
+        user.setEmail("bonismo@hotmail.com");
+        user.setLogin("bonismo");
+        user.setPassword("$2a$10$gSAhZrxMllrbgj/kkK9UceBPpChGWJA7SYIb1Mqo.n5aNLq1/oRrC");
+        user.setLangKey("zh-CN");
+        user.setActivated(true);
+        userRepository.save(user);
+        throw new Exception("aaaaaaaaaaa");
+
+    }
+
     public Optional<User> activateRegistration(String key) {
         log.debug("Activating user for activation key {}", key);
         return userRepository.findOneByActivationKey(key)

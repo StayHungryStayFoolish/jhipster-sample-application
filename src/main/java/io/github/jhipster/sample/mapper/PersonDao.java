@@ -5,6 +5,7 @@ import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * @Author: Created by bonismo@hotmail.com on 2019/7/24 7:24 PM
@@ -12,6 +13,7 @@ import org.apache.ibatis.annotations.Select;
  * @Version: 1.0
  */
 @Mapper
+@Transactional
 public interface PersonDao {
 
     @Select("SELECT * FROM person WHERE NAME = #{name}")
