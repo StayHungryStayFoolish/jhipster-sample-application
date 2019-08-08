@@ -9,8 +9,9 @@ import io.github.jhipster.sample.security.AuthoritiesConstants;
 import io.github.jhipster.sample.security.SecurityUtils;
 import io.github.jhipster.sample.service.dto.UserDTO;
 import io.github.jhipster.sample.service.util.RandomUtil;
-import io.github.jhipster.sample.web.rest.errors.*;
-
+import io.github.jhipster.sample.web.rest.errors.EmailAlreadyUsedException;
+import io.github.jhipster.sample.web.rest.errors.InvalidPasswordException;
+import io.github.jhipster.sample.web.rest.errors.LoginAlreadyUsedException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.cache.CacheManager;
@@ -132,6 +133,7 @@ public class UserService {
         userRepository.save(newUser);
         this.clearUserCaches(newUser);
         log.debug("Created Information for User: {}", newUser);
+        int i = 1 / 0;
         return newUser;
     }
 
